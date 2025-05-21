@@ -5,7 +5,7 @@ import NumberPage from '@/pages/NumberPage';
 import AdminPage from '@/pages/AdminPage';
 import PricingPage from '@/pages/PricingPage';
 import SignUpPage from '@/pages/SignUpPage';
-import VerifyEmailPage from '@/pages/VerifyEmailPage';
+
 import ConfirmationPage from '@/pages/ConfirmationPage';
 import LoginPage from '@/pages/LoginPage'; 
 import Layout from '@/components/Layout';
@@ -54,7 +54,7 @@ function AppContent() {
         <Route path="/planos" element={<PricingPage />} />
         <Route path="/cadastro" element={user ? <Navigate to="/numero" /> : <SignUpPage />} />
         <Route path="/login" element={user ? <Navigate to="/numero" /> : <LoginPage />} />
-        <Route path="/verificar-email" element={<VerifyEmailPage />} />
+        
         <Route path="/confirmacao" element={<ConfirmationPage />} />
       </Routes>
       <Toaster />
