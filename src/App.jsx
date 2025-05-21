@@ -48,12 +48,15 @@ function AppContent() {
 }
 
 function App() {
-  // Testando conexão com o backend:
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/`)
       .then((res) => res.json())
-      .then((data) => console.log("✅ Conectado ao backend:", data))
-      .catch((err) => console.error("❌ Erro ao conectar ao backend:", err));
+      .then((data) => {
+        console.log("✅ Conectado ao backend:", data);
+      })
+      .catch((err) => {
+        console.error("❌ Erro ao conectar ao backend:", err);
+      });
   }, []);
 
   return (
