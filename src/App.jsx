@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import HomePage from '@/pages/HomePage';
 import NumberPage from '@/pages/NumberPage';
@@ -7,7 +7,7 @@ import PricingPage from '@/pages/PricingPage';
 import SignUpPage from '@/pages/SignUpPage';
 import VerifyEmailPage from '@/pages/VerifyEmailPage';
 import ConfirmationPage from '@/pages/ConfirmationPage';
-import LoginPage from '@/pages/LoginPage';
+import LoginPage from '@/pages/LoginPage'; 
 import Layout from '@/components/Layout';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/ThemeProvider';
@@ -18,11 +18,7 @@ function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <p className="text-white text-xl">Carregando...</p>
-      </div>
-    );
+    return <div className="flex justify-center items-center h-screen"><p className="text-white text-xl">Carregando...</p></div>;
   }
 
   if (!user) {
@@ -39,21 +35,21 @@ function AppContent() {
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route
-          path="/numero"
+        <Route 
+          path="/numero" 
           element={
             <ProtectedRoute>
               <NumberPage />
             </ProtectedRoute>
-          }
+          } 
         />
-        <Route
-          path="/admin"
+        <Route 
+          path="/admin" 
           element={
             <ProtectedRoute>
               <AdminPage />
             </ProtectedRoute>
-          }
+          } 
         />
         <Route path="/planos" element={<PricingPage />} />
         <Route path="/cadastro" element={user ? <Navigate to="/numero" /> : <SignUpPage />} />
