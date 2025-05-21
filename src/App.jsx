@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import HomePage from '@/pages/HomePage';
 import NumberPage from '@/pages/NumberPage';
@@ -11,7 +11,6 @@ import LoginPage from '@/pages/LoginPage';
 import Layout from '@/components/Layout';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import { supabase } from '@/lib/supabaseClient';
 import { AuthProvider, useAuth } from '@/contexts/AuthContext';
 
 function ProtectedRoute({ children }) {
@@ -29,28 +28,14 @@ function ProtectedRoute({ children }) {
 }
 
 function AppContent() {
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
 
   return (
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route 
-          path="/numero" 
-          element={
-            <ProtectedRoute>
-              <NumberPage />
-            </ProtectedRoute>
-          } 
-        />
-        <Route 
-          path="/admin" 
-          element={
-            <ProtectedRoute>
-              <AdminPage />
-            </ProtectedRoute>
-          } 
-        />
+        <Route path="/numero" element={<ProtectedRoute><NumberPage /></ProtectedRoute>} />
+        <Route path="/admin" element={<ProtectedRoute><AdminPage /></ProtectedRoute>} />
         <Route path="/planos" element={<PricingPage />} />
         <Route path="/cadastro" element={user ? <Navigate to="/numero" /> : <SignUpPage />} />
         <Route path="/login" element={user ? <Navigate to="/numero" /> : <LoginPage />} />
@@ -63,16 +48,12 @@ function AppContent() {
 }
 
 function App() {
-  // Teste de conexão com o backend
+  // Testando conexão com o backend:
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/`)
       .then((res) => res.json())
-      .then((data) => {
-        console.log("✅ Conectado ao backend:", data);
-      })
-      .catch((err) => {
-        console.error("❌ Erro ao conectar ao backend:", err);
-      });
+      .then((data) => console.log("✅ Conectado ao backend:", data))
+      .catch((err) => console.error("❌ Erro ao conectar ao backend:", err));
   }, []);
 
   return (
