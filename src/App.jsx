@@ -76,3 +76,26 @@ import React, { useState, useEffect } from 'react';
     }
 
     export default App;
+
+    import { useEffect } from "react";
+
+function App() {
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("✅ Conectado ao backend:", data);
+      })
+      .catch((err) => {
+        console.error("❌ Erro ao conectar ao backend:", err);
+      });
+  }, []);
+
+  return (
+    <div>
+      <h1>Testando conexão com o backend...</h1>
+    </div>
+  );
+}
+
+export default App;
