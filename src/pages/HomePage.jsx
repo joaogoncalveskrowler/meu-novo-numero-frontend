@@ -1,10 +1,11 @@
 import React from 'react';
     import { Link } from 'react-router-dom';
+    import FAQSection from '@/components/FAQSection';
     import { motion } from 'framer-motion';
     import { Button } from '@/components/ui/button';
     import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
     import { Zap, Shield, MessageCircle, Users, DollarSign, Sparkles, ArrowRight } from 'lucide-react';
-    import FAQSection from '@/components/FAQSection';
+    
 
 // No seu JSX, onde quer exibir:
 <FAQSection />
