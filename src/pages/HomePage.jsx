@@ -4,6 +4,10 @@ import React from 'react';
     import { Button } from '@/components/ui/button';
     import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
     import { Zap, Shield, MessageCircle, Users, DollarSign, Sparkles, ArrowRight } from 'lucide-react';
+    import FAQSection from '@/components/FAQSection';
+
+// No seu JSX, onde quer exibir:
+<FAQSection />
 
     const FeatureCard = ({ icon, title, description, delay }) => (
       <motion.div
