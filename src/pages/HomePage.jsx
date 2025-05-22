@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FAQSection from '@/components/FAQSection';
+import FAQSection from '../components/FAQSection';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -161,7 +161,7 @@ const HomePage = () => {
         </ol>
       </motion.section>
 
-      {/* Aqui entra o FAQ Section */}
+      {/* Aqui entra o FAQ Section qq */}
       <FAQSection />
 
     </div>
